@@ -1,13 +1,20 @@
-import React, { useEffect } from 'react';
-import logo from './logo.svg';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import Races from './components/Races';
 import './App.css';
 
 function App() {
 
-  interface Race {
+  type Race = {
     slug: string;
     name: string;
+    desc: string;
+    age: string;
+    alignment: string;
+    size: string;
+    speed_desc: string;
+    languages: string;
+    vision: string;
+    traits: string;
   }
 
   interface RaceResults{
@@ -31,13 +38,13 @@ function App() {
     races()
   }, [])
 
-
-  // console.log(race.name)
   return (
     <div className="App">
-      {races.map((race) => 
-        <div key={race.slug}> {race.name} </div>
-      )
+      
+      {
+        races.map((race) => 
+          <Races key={race.slug} {...race}/>
+        )
       }
       
     </div>
